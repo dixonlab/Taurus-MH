@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import pysam
 import sys
 fn=sys.argv[1]
