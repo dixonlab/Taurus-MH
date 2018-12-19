@@ -1,4 +1,4 @@
-#!/usr/bin/python
+#!/usr/bin/env python
 
 #"usage: 3piece_read_split.py Input_file First_piece_size(bp) Last_piece_size(bp) upstream_to_trim(bp) downstream_to_trim(bp)"
 import gzip
