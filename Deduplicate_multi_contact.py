@@ -1,3 +1,5 @@
+#!/usr/bin/env python
+
 import sys
 fn=sys.argv[1]
 dfh=open(fn,'r')
