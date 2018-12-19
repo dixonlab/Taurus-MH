@@ -32,3 +32,4 @@ for read in dfh:
                         for i in splits:
                                 locs.append('na')
                 locs[splits.index(split_st)]=dfh.get_reference_name(read.reference_id)+':'+str(read.pos+1)
+rfh.write(pre_ID+'\t'+'\t'.join(locs)+'\n')
