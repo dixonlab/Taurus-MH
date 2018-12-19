@@ -1,7 +1,7 @@
 import pysam
 import sys
 fn=sys.argv[1]
-rfh=open(sys.argv[1]+'_multi_split_aligned.txt','w')
+rfh=open(fn.split('/')[-1]+'_multi_split_aligned_temp.txt','w')
 
 IDs=[]
 align=[]
@@ -33,3 +33,7 @@ for read in dfh:
                                 locs.append('na')
                 locs[splits.index(split_st)]=dfh.get_reference_name(read.reference_id)+':'+str(read.pos+1)
 rfh.write(pre_ID+'\t'+'\t'.join(locs)+'\n')
+rfh.close()
+import os
+os.system('sort -k2 '+fn.split('/')[-1]+'_multi_split_aligned_temp.txt > '+fn.split('/')[-1]+'_multi_split_aligned.txt')
+os.system('rm '+fn.split('/')[-1]+'_multi_split_aligned_temp.txt')
