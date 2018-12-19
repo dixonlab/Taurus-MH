@@ -18,7 +18,6 @@ plus1=dfh1.readline().split()
 QS1=dfh1.readline().rstrip()
 rfhs=[]
 
-
 size1=int(sys.argv[2])
 size2=int(sys.argv[3])
 trim1=int(sys.argv[4])
@@ -27,11 +26,6 @@ trim2=int(sys.argv[5])
 for i in range(1,4):
         rfhs.append(open(fn1+'_r'+str(i)+'.fq','w'))
 
-
-multi_CS=0
-
-count1=0
-count2=0
 while line1:
         total+=1
         rfhs[0].write(ID1[0].split('_')[0]+'_'+ID1[0].split('_')[1].split(':')[0]+'-1:'+':'.join(ID1[0].split('_')[1].split(':')[1:])+'\n'+line1[trim1:size1+trim1]+'\n'+plus1[0]+'\n'+QS1[5:size1+5]+'\n')
