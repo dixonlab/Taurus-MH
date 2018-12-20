@@ -19,17 +19,17 @@ if 'gz' in R2.split('.')[-1]:
 if 'gz' not in R2.split('.')[-1]:
         R2_mod='.'.join(R2.split('.')[:-1]).split('/')[-1]
 
-os.system(bismark+"bismark --bowtie1 --path_to_bowtie "+bowtie+" -un "+REF+" "+R2+" &&"\
-        +bismark+"bismark --bowtie1 --path_to_bowtie "+bowtie+" -un --pbat "+REF+" "+R1)
+os.system(bismark+"/bismark --bowtie1 --path_to_bowtie "+bowtie+" -un "+REF+" "+R2+" &&"\
+        +bismark+"/bismark --bowtie1 --path_to_bowtie "+bowtie+" -un --pbat "+REF+" "+R1)
 
 R1=R1.split('/')[-1]
 R2=R2.split('/')[-1]
 
-os.system("python /pbld/netapp/home/dslee/Python_codes/SC_m3C/Upload/3piece_read_split.py "+R1+"_unmapped_reads.fq.gz &&\
-        python /pbld/netapp/home/dslee/Python_codes/SC_m3C/Upload/3piece_read_split.py "+R2+"_unmapped_reads.fq.gz &&"\
-+bismark+"bismark --bowtie1 --path_to_bowtie "+bowtie+" --pbat "+REF+' '+R1+'_unmapped_reads.fq.gz_r1.fq '+R1+'_unmapped_reads.fq.gz_r2.fq '+R1+'_unmapped_reads.fq.gz_r3.fq &&'\
-+bismark+"bismark --bowtie1 --path_to_bowtie "+bowtie+" "+REF+' '+R2+'_unmapped_reads.fq.gz_r1.fq '+R2+'_unmapped_reads.fq.gz_r2.fq '+R2+'_unmapped_reads.fq.gz_r3.fq &&'\
-+"/pbld/netapp/home/dslee/Tools/Bismark_v0.19.0/deduplicate_bismark --bam --output_dir ./ \
+os.system("python ./3piece_read_split.py "+R1+"_unmapped_reads.fq.gz &&\
+        python ./3piece_read_split.py "+R2+"_unmapped_reads.fq.gz &&"\
++bismark+"/bismark --bowtie1 --path_to_bowtie "+bowtie+" --pbat "+REF+' '+R1+'_unmapped_reads.fq.gz_r1.fq '+R1+'_unmapped_reads.fq.gz_r2.fq '+R1+'_unmapped_reads.fq.gz_r3.fq &&'\
++bismark+"/bismark --bowtie1 --path_to_bowtie "+bowtie+" "+REF+' '+R2+'_unmapped_reads.fq.gz_r1.fq '+R2+'_unmapped_reads.fq.gz_r2.fq '+R2+'_unmapped_reads.fq.gz_r3.fq &&'\
++bismark+"/deduplicate_bismark --bam --output_dir ./ \
 "+R1_mod+"_bismark.bam \
 "+R2_mod+"_bismark.bam \
 "+R1+"_unmapped_reads.fq.gz_r1_bismark.bam \
@@ -38,7 +38,7 @@ os.system("python /pbld/netapp/home/dslee/Python_codes/SC_m3C/Upload/3piece_read
 "+R2+"_unmapped_reads.fq.gz_r1_bismark.bam \
 "+R2+"_unmapped_reads.fq.gz_r2_bismark.bam \
 "+R2+"_unmapped_reads.fq.gz_r3_bismark.bam &&"\
-+"java -jar -Xmx10g /pbld/netapp/apps/picard-tools-2.1.1/picard.jar MergeSamFiles SO=queryname \
++"java -jar -Xmx10g '+picard+' MergeSamFiles SO=queryname \
 I="+R1_mod+"_bismark.bam \
 I="+R2_mod+"_bismark.bam \
 I="+R1+"_unmapped_reads.fq.gz_r2_bismark.bam \
@@ -47,6 +47,6 @@ I="+R1+"_unmapped_reads.fq.gz_r1_bismark.bam \
 I="+R1+"_unmapped_reads.fq.gz_r2_bismark.bam \
 I="+R1+"_unmapped_reads.fq.gz_r3_bismark.bam \
 O="+R1+"_all_merged_3split.bam && "\
-+"/pbld/netapp/home/dslee/Tools/Python-2.7.12/python /pbld/netapp/home/dslee/Python_codes/SC_m3C/Upload/Bam_to_multi_contact.py ./"+R1+"_all_merged_3split.bam && "\
-+"/pbld/netapp/home/dslee/Tools/Python-2.7.12/python /pbld/netapp/home/dslee/Python_codes/SC_m3C/Upload/Deduplicate_multi_contact.py "+R1+"_all_merged_3split.bam_multi_split_aligned.txt && "\
-+"/pbld/netapp/home/dslee/Tools/Python-2.7.12/python /pbld/netapp/home/dslee/Python_codes/SC_m3C/Upload/Multi_contact_to_two_contact_stat.py  ./"+R1+"_all_merged_3split.bam_multi_split_aligned.txt")
++"./Bam_to_multi_contact.py "+R1+"_all_merged_3split.bam && "\
++"./Deduplicate_multi_contact.py "+R1+"_all_merged_3split.bam_multi_split_aligned.txt && "\
++"./Multi_contact_to_two_contact_stat.py "+R1+"_all_merged_3split.bam_multi_split_aligned.txt")
