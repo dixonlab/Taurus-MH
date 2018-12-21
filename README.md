@@ -2,7 +2,7 @@
 
 Introduction
 
-TAURUS-MH (Two-step Alignment with Unmapped Reads Using read Splitting for Methyl-HiC) is TAURUS-MH is a mapping pipeline for methyl-3C/methyl-HiC data using a hybrid of ungapped and manual read splitting alignments with Bismark and Bowtie1.
+TAURUS-MH (Two-step Alignment with Unmapped Reads Using read Splitting for Methyl-HiC) is a mapping pipeline for methyl-3C/methyl-HiC data using a hybrid of ungapped and manual read splitting alignments with Bismark and Bowtie1.
 
 TAURUS-MH is dependent on Bismark, Bowtie1, PICARD, python, and pysam (a python module).
 
@@ -14,4 +14,3 @@ After the installation, TAURUS-MH.py will be generated.
 
 You can run TAURUS-MH with cmd:
 python TAURUS-MH.py <genome_folder> <G to A converted mate> <C to T converted mate>  
-  
