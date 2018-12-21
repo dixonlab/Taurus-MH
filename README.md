@@ -11,8 +11,7 @@ python Install.py
 The Install program will ask you path to picard, bismark, bowtie, and python. Please provide correct path to these.
 After the installation, TAURUS-MH.py will be generated.
 
-You can run TAURUS-MH with cmd:
-python TAURUS-MH.py <genome_folder> <G to A converted mate> <C to T converted mate>
+You can run TAURUS-MH with cmd: python TAURUS-MH.py <genome_folder> <G to A converted mate> <C to T converted mate>
 
 
 
