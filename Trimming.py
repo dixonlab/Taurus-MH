@@ -14,7 +14,7 @@ line2_2=dfh2.readline()
 line2_3=dfh2.readline()
 line2_4=dfh2.readline()
 while line1_1:
-        if len(line1_2[25:-4])>=20 and line2_2[25:-4]>=20:
+        if len(line1_2[25:-4])>=50 and line2_2[25:-4]>=50:
                 rfh1.write(line1_1+line1_2[25:-4]+'\n'+line1_3+line1_4[25:-4]+'\n')
                 rfh2.write(line2_1+line2_2[25:-4]+'\n'+line2_3+line2_4[25:-4]+'\n')
         line1_1=dfh1.readline()
@@ -25,7 +25,7 @@ while line1_1:
         line2_2=dfh2.readline()
         line2_3=dfh2.readline()
         line2_4=dfh2.readline()
-if len(line1_2[25:-4])>=20 and line2_2[25:-4]>=20:                                  
+if len(line1_2[25:-4])>=50 and line2_2[25:-4]>=50:                                  
         rfh1.write(line1_1+line1_2[25:-4]+'\n'+line1_3+line1_4[25:-4]+'\n')
         rfh2.write(line2_1+line2_2[25:-4]+'\n'+line2_3+line2_4[25:-4]+'\n')
 rfh1.close()
