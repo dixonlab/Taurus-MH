@@ -30,6 +30,9 @@ rfh.write("bismark="+bismark\
 +"\nR1_mod="+R1_mod\
 +"\nR2_mod="+R2_mod\
 +'\n'
++"\n${python}/python ${TAURUS_loc}/Trimming.py ${R1_pre} &"\
++"\n${python}/python ${TAURUS_loc}/Trimming.py ${R2_pre} &"\
++"\nwait"\
 +"\n${bismark}/bismark --bowtie1 --path_to_bowtie ${bowtie} -un ${REF} ${R2} & "
 +"\n${bismark}/bismark --bowtie1 --path_to_bowtie ${bowtie} -un --pbat ${REF} ${R1} &"
 +"\nwait"\
