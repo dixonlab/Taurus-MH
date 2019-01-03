@@ -39,8 +39,8 @@ rfh.write("bismark="+bismark\
 +"\n${python}/python ${TAURUS_loc}/3piece_read_split.py ${R1}_unmapped_reads.fq.gz &"\
 +"\n${python}/python ${TAURUS_loc}/3piece_read_split.py ${R2}_unmapped_reads.fq.gz &"\
 +"\nwait"\
-+"\n${bismark}bismark --bowtie1 --path_to_bowtie ${bowtie} --pbat ${REF} ${R1}_unmapped_reads.fq.gz_r1.fq ${R1}_unmapped_reads.fq.gz_r2.fq ${R1}_unmapped_reads.fq.gz_r3.fq &"\
-+"\n${bismark}bismark --bowtie1 --path_to_bowtie ${bowtie} ${REF} ${R2}_unmapped_reads.fq.gz_r1.fq ${R2}_unmapped_reads.fq.gz_r2.fq ${R2}_unmapped_reads.fq.gz_r3.fq &"\
++"\n${bismark}/bismark --bowtie1 --path_to_bowtie ${bowtie} --pbat ${REF} ${R1}_unmapped_reads.fq.gz_r1.fq ${R1}_unmapped_reads.fq.gz_r2.fq ${R1}_unmapped_reads.fq.gz_r3.fq &"\
++"\n${bismark}/bismark --bowtie1 --path_to_bowtie ${bowtie} ${REF} ${R2}_unmapped_reads.fq.gz_r1.fq ${R2}_unmapped_reads.fq.gz_r2.fq ${R2}_unmapped_reads.fq.gz_r3.fq &"\
 +"\nwait"\
 +"\n"
 +"\n${bismark}/deduplicate_bismark --bam --output_dir ./ \\"
