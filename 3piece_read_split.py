@@ -22,8 +22,8 @@ rfhs=[]
 #size2=int(sys.argv[3])
 #trim1=int(sys.argv[4])
 #trim2=int(sys.argv[5])
-size1=40
-size2=40
+size1=35
+size2=35
 trim1=10
 trim2=10
 
