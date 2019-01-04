@@ -36,8 +36,8 @@ while line1:
 		rfhs[0].write(ID1[0].split('_')[0]+'_'+ID1[0].split('_')[1].split(':')[0]+'-1:'+':'.join(ID1[0].split('_')[1].split(':')[1:])+'\n'+line1[trim1:size1+trim1]+'\n'+plus1[0]+'\n'+QS1[trim1:size1+trim1]+'\n')
 	if len(line1[trim1+size1:(-1*size2)-trim2])>=30:
 		rfhs[1].write(ID1[0].split('_')[0]+'_'+ID1[0].split('_')[1].split(':')[0]+'-2:'+':'.join(ID1[0].split('_')[1].split(':')[1:])+'\n'+line1[trim1+size1:(-1*size2)-trim2]+'\n'+plus1[0]+'\n'+QS1[trim1+size1:(-1*size2)-trim2]+'\n')
-	if len(line1[(-1*size2)-trim2:])>=30:
-		rfhs[2].write(ID1[0].split('_')[0]+'_'+ID1[0].split('_')[1].split(':')[0]+'-3:'+':'.join(ID1[0].split('_')[1].split(':')[1:])+'\n'+line1[(-1*size2)-trim2:]+'\n'+plus1[0]+'\n'+QS1[(-1*size2)-trim2:]+'\n')
+	if len(line1[(-1*size2)-trim2:-1*trim2])>=30:
+		rfhs[2].write(ID1[0].split('_')[0]+'_'+ID1[0].split('_')[1].split(':')[0]+'-3:'+':'.join(ID1[0].split('_')[1].split(':')[1:])+'\n'+line1[(-1*size2)-trim2:-1*trim2]+'\n'+plus1[0]+'\n'+QS1[(-1*size2)-trim2:-1*trim2]+'\n')
 	ID1=dfh1.readline().split()
 	line1=dfh1.readline().rstrip()
 	plus1=dfh1.readline().split()
