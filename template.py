@@ -5,17 +5,19 @@ import sys
 print "USAGE: python TAURUS-MH <genome_folder> <G to A converted mate> <C to T converted mate>"
 
 REF=sys.argv[1]
-R1=sys.argv[2]
-R2=sys.argv[3]
+R1_pre=sys.argv[2]
+R2_pre=sys.argv[3]
+R1=R1_pre.split('/')[-1]+'_F25_L3_trimmed.fastq'
+R2=R2_pre.split('/')[-1]+'_F25_L3_trimmed.fastq'
 
 if 'gz' in R1.split('.')[-1]:
-	R1_mod='.'.join(R1.split('.')[:-2]).split('/')[-1]
+	R1_mod='.'.join(R1.split('.')[:-2])
 if 'gz' not in R1.split('.')[-1]:
-	R1_mod='.'.join(R1.split('.')[:-1]).split('/')[-1]
+	R1_mod='.'.join(R1.split('.')[:-1])
 if 'gz' in R2.split('.')[-1]:
-        R2_mod='.'.join(R2.split('.')[:-2]).split('/')[-1]
+        R2_mod='.'.join(R2.split('.')[:-2])
 if 'gz' not in R2.split('.')[-1]:
-        R2_mod='.'.join(R2.split('.')[:-1]).split('/')[-1]
+        R2_mod='.'.join(R2.split('.')[:-1])
 
 rfh=open('Run_TAURUS-MH_'+R1.split('/')[-1]+'.sh','w')
 
