@@ -40,8 +40,6 @@ rfh.write("bismark="+bismark\
 +"\n${bismark}/bismark --bowtie1 --path_to_bowtie ${bowtie} -un --pbat ${REF} ${R1} &"
 +"\nwait"\
 +"\n"\
-+"\nR1="+R1.split('/')[-1]\
-+"\nR2="+R2.split('/')[-1]\
 +"\n${python}/python ${TAURUS_loc}/3piece_read_split.py ${R1}_unmapped_reads.fq.gz &"\
 +"\n${python}/python ${TAURUS_loc}/3piece_read_split.py ${R2}_unmapped_reads.fq.gz &"\
 +"\nwait"\
