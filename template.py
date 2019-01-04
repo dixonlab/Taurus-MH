@@ -25,8 +25,10 @@ rfh.write("bismark="+bismark\
 +"\nTAURUS_loc="+TAURUS_loc\
 +"\npython="+python\
 +"\nREF="+REF\
-+"\nR1="+R1\
-+"\nR2="+R2\
++"\nR1_pre="+R1\
++"\nR2_pre="+R2\
++"\nR1="+R1+'_F25_L3_trimmed.fastq'\
++"\nR2="+R2+'_F25_L3_trimmed.fastq'\
 +"\nR1_mod="+R1_mod\
 +"\nR2_mod="+R2_mod\
 +"\n"
