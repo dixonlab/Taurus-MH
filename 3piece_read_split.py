@@ -24,8 +24,8 @@ rfhs=[]
 #trim2=int(sys.argv[5])
 size1=40
 size2=40
-trim1=30
-trim2=30
+trim1=10
+trim2=10
 
 for i in range(1,4):
 	rfhs.append(open(fn1+'_r'+str(i)+'.fq','w'))
