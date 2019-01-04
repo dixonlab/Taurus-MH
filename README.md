@@ -8,5 +8,9 @@ python Install.py
 The Install program will ask you path to picard, bismark, bowtie, and python. Please provide correct path to these.
 
 After the installation, TAURUS-MH.py will be generated.
-You can run TAURUS-MH with cmd: 
-python TAURUS-MH.py genome_folder G_to_A_converted_mate C_to_T_converted mate
+
+Before the alignment, you have to prepare reference genome by:
+/bismark_folder/bismark_genome_preparation --bowtie1 --path_to_bowtie <Path_to_bowtie1> --verbose <genome_folder>
+
+After the Installation and genome preparation, you can run TAURUS-MH with cmd: 
+python TAURUS-MH.py <genome_folder> G_to_A_converted_mate C_to_T_converted mate
