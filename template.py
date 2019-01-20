@@ -64,9 +64,9 @@ rfh.write("bismark="+bismark\
 +"\nI=${R2_mod}_bismark.bam \\"
 +"\nI=${R1}_unmapped_reads.fq.gz_r2_bismark.bam \\"
 +"\nI=${R1}_unmapped_reads.fq.gz_r3_bismark.bam \\"
-+"\nI=${R1}_unmapped_reads.fq.gz_r1_bismark.bam \\"
-+"\nI=${R1}_unmapped_reads.fq.gz_r2_bismark.bam \\"
-+"\nI=${R1}_unmapped_reads.fq.gz_r3_bismark.bam \\"
++"\nI=${R2}_unmapped_reads.fq.gz_r1_bismark.bam \\"
++"\nI=${R2}_unmapped_reads.fq.gz_r2_bismark.bam \\"
++"\nI=${R2}_unmapped_reads.fq.gz_r3_bismark.bam \\"
 +"\nO=${R1}_all_merged_3split.bam "\
 +"\n"
 +"\n${python}/python ${TAURUS_loc}/Bam_to_multi_contact.py ${R1}_all_merged_3split.bam"\
