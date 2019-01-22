@@ -37,20 +37,29 @@ for i in dfh:
 				read1_pos=int(read1.split(':')[1])
 				read2_chro=read2.split(':')[0]
 				read2_pos=int(read2.split(':')[1])
-				rfh.write(read1_chro+'\t'+str(read1_pos)+'\t'+read2_chro+'\t'+str(read2_pos)+'\n')
-				if read1_chro==read2_chro:
-					if abs(read1_pos-read2_pos)<1000:
-						intra_less+=1
+				if read1_chro in chro_order and read2_chro in chro_order:
+					if chr_order.index(read1_chro)<chr_order.index(read2_chro):
+						rfh.write('_'.join(fn.split('_')[:3])+'\t'+read1_chro+'\t'+str(read1_pos)+'\t'+read2_chro+'\t'+str(read2_pos)+'\n')						
+					if chr_order.index(read1_chro)>chr_order.index(read2_chro):
+						rfh.write('_'.join(fn.split('_')[:3])+'\t'+read2_chro+'\t'+str(read2_pos)+'\t'+read1_chro+'\t'+str(read1_pos)+'\n')						
+					if chr_order.index(read1_chro)==chr_order.index(read2_chro):
+						if read1_pos<=read2_pos:							
+							rfh.write('_'.join(fn.split('_')[:3])+'\t'+read1_chro+'\t'+str(read1_pos)+'\t'+read2_chro+'\t'+str(read2_pos)+'\n')
+						if read1_pos>read2_pos:							
+							rfh.write('_'.join(fn.split('_')[:3])+'\t'+read2_chro+'\t'+str(read2_pos)+'\t'+read1_chro+'\t'+str(read1_pos)+'\n')
+					if read1_chro==read2_chro:
+						if abs(read1_pos-read2_pos)<1000:
+							intra_less+=1
+							if line[1]!='na' and line[-1]!='na':
+								no_split_intra_less+=1
+						elif abs(read1_pos-read2_pos)>=1000:
+							intra_more+=1
+							if line[1]!='na' and line[-1]!='na':
+								no_split_intra_more+=1
+					if read1_chro!=read2_chro:
+						inter+=1
 						if line[1]!='na' and line[-1]!='na':
-							no_split_intra_less+=1
-					elif abs(read1_pos-read2_pos)>=1000:
-						intra_more+=1
-						if line[1]!='na' and line[-1]!='na':
-							no_split_intra_more+=1
-				if read1_chro!=read2_chro:
-					inter+=1
-					if line[1]!='na' and line[-1]!='na':
-						no_split_inter+=1
+							no_split_inter+=1
 				break
 intra_more=float(intra_more)
 intra_less=float(intra_less)
