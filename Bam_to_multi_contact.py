@@ -24,6 +24,12 @@ for read in dfh:
 	if '_' in line[0]:
 		ID=line[0].split('_')[0]
 		split_st=line[0].split('_')[1].split(':')[0]
+		if line[1]=='0':
+			strand='+'
+		if line[1]=='16':
+			strand='-'
+		if line[1]!='0' and line[1]!='16':
+			print read
 		if ID!=pre_ID:
 			if pre_ID!='':
 				rfh.write(pre_ID+'\t'+'\t'.join(locs)+'\n')
@@ -31,7 +37,7 @@ for read in dfh:
 			locs=[]
 			for i in splits:
 				locs.append('na')
-		locs[splits.index(split_st)]=dfh.get_reference_name(read.reference_id)+':'+str(read.pos+1)
+		locs[splits.index(split_st)]=dfh.get_reference_name(read.reference_id)+':'+str(read.pos+1)+'_'+strand
 rfh.write(pre_ID+'\t'+'\t'.join(locs)+'\n')
 rfh.close()
 import os
