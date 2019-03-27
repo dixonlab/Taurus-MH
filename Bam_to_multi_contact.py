@@ -25,9 +25,15 @@ for read in dfh:
 		ID=line[0].split('_')[0]
 		split_st=line[0].split('_')[1].split(':')[0]
 		if line[1]=='0':
-			strand='+'
+			if split_st.split('-')[0]=='1':
+				strand='-'
+			elif split_st.split('-')[0]=='2':
+				strand='+'
 		if line[1]=='16':
-			strand='-'
+			if split_st.split('-')[0]=='1':
+				strand='+'
+			elif split_st.split('-')[0]=='2':
+				strand='-'
 		if line[1]!='0' and line[1]!='16':
 			print read
 		if ID!=pre_ID:
