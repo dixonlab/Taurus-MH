@@ -2,8 +2,8 @@ import sys
 import gzip
 dfh1=gzip.open(sys.argv[1],'r')
 dfh2=gzip.open(sys.argv[1].replace('R1','R2'),'r')
-rfh1=open(sys.argv[1].split('/')[-1]+'_F25_L3_trimmed.fastq','w')
-rfh2=open(sys.argv[1].split('/')[-1].replace('R1','R2')+'_F25_L3_trimmed.fastq','w')
+rfh1=open(sys.argv[1].split('/')[-1]+'_F25_L4_trimmed.fastq','w')
+rfh2=open(sys.argv[1].split('/')[-1].replace('R1','R2')+'_F25_L4_trimmed.fastq','w')
 line1_1=dfh1.readline()
 line1_2=dfh1.readline()
 line1_3=dfh1.readline()
