@@ -34,19 +34,21 @@ for i in dfh:
 			if all_data[-1*b]!='na':
 				read2=all_data[-1*b]
 				read1_chro=read1.split(':')[0]
-				read1_pos=int(read1.split(':')[1])
+				read1_pos=int(read1.split(':')[1].split('_')[0])
+				read1_st=read1.split(':')[1].split('_')[1]
 				read2_chro=read2.split(':')[0]
-				read2_pos=int(read2.split(':')[1])
+				read2_pos=int(read2.split(':')[1].split('_')[0])
+				read2_st=read2.split(':')[1].split('_')[1]
 				if read1_chro in chro_order and read2_chro in chro_order:
 					if chr_order.index(read1_chro)<chr_order.index(read2_chro):
-						rfh.write('_'.join(fn.split('_')[:3])+'\t'+read1_chro+'\t'+str(read1_pos)+'\t'+read2_chro+'\t'+str(read2_pos)+'\n')						
+						rfh.write('_'.join(fn.split('_')[:3])+'\t'+read1_chro+'\t'+str(read1_pos)+'\t'+read2_chro+'\t'+str(read2_pos)+'\t'+read1_st+'\t'+read2_st+'\n')						
 					if chr_order.index(read1_chro)>chr_order.index(read2_chro):
-						rfh.write('_'.join(fn.split('_')[:3])+'\t'+read2_chro+'\t'+str(read2_pos)+'\t'+read1_chro+'\t'+str(read1_pos)+'\n')						
+						rfh.write('_'.join(fn.split('_')[:3])+'\t'+read2_chro+'\t'+str(read2_pos)+'\t'+read1_chro+'\t'+str(read1_pos)+'\t'+read2_st+'\t'+read1_st+'\n')						
 					if chr_order.index(read1_chro)==chr_order.index(read2_chro):
 						if read1_pos<=read2_pos:							
-							rfh.write('_'.join(fn.split('_')[:3])+'\t'+read1_chro+'\t'+str(read1_pos)+'\t'+read2_chro+'\t'+str(read2_pos)+'\n')
+							rfh.write('_'.join(fn.split('_')[:3])+'\t'+read1_chro+'\t'+str(read1_pos)+'\t'+read2_chro+'\t'+str(read2_pos)+'\t'+read1_st+'\t'+read2_st+'\n')
 						if read1_pos>read2_pos:							
-							rfh.write('_'.join(fn.split('_')[:3])+'\t'+read2_chro+'\t'+str(read2_pos)+'\t'+read1_chro+'\t'+str(read1_pos)+'\n')
+							rfh.write('_'.join(fn.split('_')[:3])+'\t'+read2_chro+'\t'+str(read2_pos)+'\t'+read1_chro+'\t'+str(read1_pos)+'\t'+read2_st+'\t'+read1_st+'\n')
 					if read1_chro==read2_chro:
 						if abs(read1_pos-read2_pos)<1000:
 							intra_less+=1
