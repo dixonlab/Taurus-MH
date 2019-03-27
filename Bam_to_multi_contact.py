@@ -43,7 +43,10 @@ for read in dfh:
 			locs=[]
 			for i in splits:
 				locs.append('na')
-		locs[splits.index(split_st)]=dfh.get_reference_name(read.reference_id)+':'+str(read.pos+1)+'_'+strand
+		if strand=='-':
+			locs[splits.index(split_st)]=dfh.get_reference_name(read.reference_id)+':'+str(read.pos+1)+'_'+strand
+		if strand=='+':
+			locs[splits.index(split_st)]=dfh.get_reference_name(read.reference_id)+':'+str(read.pos+len(line[9]))+'_'+strand
 rfh.write(pre_ID+'\t'+'\t'.join(locs)+'\n')
 rfh.close()
 import os
