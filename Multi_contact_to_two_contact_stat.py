@@ -21,6 +21,14 @@ no_split_intra_less=0
 no_split_intra_more=0
 no_split_inter=0
 
+chro_order=[]
+for i in range(1,23):
+	chro_order.append('chr'+str(i))
+chro_order.append('chrX')
+chro_order.append('chrY')
+chro_order.append('chrM')
+
+
 for i in dfh:
 	line=i.split()
 	all_data=line[1:]
@@ -49,19 +57,19 @@ for i in dfh:
 							rfh.write('_'.join(fn.split('_')[:3])+'\t'+read1_chro+'\t'+str(read1_pos)+'\t'+read2_chro+'\t'+str(read2_pos)+'\t'+read1_st+'\t'+read2_st+'\n')
 						if read1_pos>read2_pos:							
 							rfh.write('_'.join(fn.split('_')[:3])+'\t'+read2_chro+'\t'+str(read2_pos)+'\t'+read1_chro+'\t'+str(read1_pos)+'\t'+read2_st+'\t'+read1_st+'\n')
-					if read1_chro==read2_chro:
-						if abs(read1_pos-read2_pos)<1000:
-							intra_less+=1
-							if line[1]!='na' and line[-1]!='na':
-								no_split_intra_less+=1
-						elif abs(read1_pos-read2_pos)>=1000:
-							intra_more+=1
-							if line[1]!='na' and line[-1]!='na':
-								no_split_intra_more+=1
-					if read1_chro!=read2_chro:
-						inter+=1
+				if read1_chro==read2_chro:
+					if abs(read1_pos-read2_pos)<1000:
+						intra_less+=1
 						if line[1]!='na' and line[-1]!='na':
-							no_split_inter+=1
+							no_split_intra_less+=1
+					elif abs(read1_pos-read2_pos)>=1000:
+						intra_more+=1
+						if line[1]!='na' and line[-1]!='na':
+							no_split_intra_more+=1
+				if read1_chro!=read2_chro:
+					inter+=1
+					if line[1]!='na' and line[-1]!='na':
+						no_split_inter+=1
 				break
 intra_more=float(intra_more)
 intra_less=float(intra_less)
