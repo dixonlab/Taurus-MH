@@ -46,10 +46,10 @@ for i in dfh1:
                                 index2=100000000000
         if index1==index2:
                 if ID1.split('_')[-1][:2]=='CG':
-                        rfh.write(ID2+'\t'+data1+'\t'+data2+'\n')
+                        rfh.write(ID1+'\t'+data1+'\t'+data2+'\n')
         if index1<index2:
                 if ID1.split('_')[-1][:2]=='CG':
-                        rfh.write(ID2+'\t'+data1+'\tNA\n')
+                        rfh.write(ID1+'\t'+data1+'\tNA\n')
         if index1==100000000000 and index2==100000000000:
                 break
 for i in dfh2:
@@ -64,10 +64,10 @@ for i in dfh2:
                 index2=100000000000
         if index1==index2:
                 if ID1.split('_')[-1][:2]=='CG':
-                        rfh.write(ID2+'\t'+data1+'\t'+data2+'\n')
+                        rfh.write(ID1+'\t'+data1+'\t'+data2+'\n')
         if index1<index2:
                 if ID1.split('_')[-1][:2]=='CG':
-                        rfh.write(ID2+'\t'+data1+'\tNA\n')
+                        rfh.write(ID1+'\t'+data1+'\tNA\n')
         if index2<index1:
                 if ID2.spit('_')[-1][:2]=='CG':
                         rfh.write(ID2+'\tNA\t'+data2+'\n')
