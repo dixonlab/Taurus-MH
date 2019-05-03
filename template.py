@@ -2,11 +2,30 @@
 
 import os
 import sys
-print "USAGE: python TAURUS-MH <genome_folder> <G to A converted mate> <C to T converted mate>"
+com=sys.argv
+if '-r' not in com or '-1' not in com or -2 not in 'com':
+	print "USAGE: python TAURUS-MH -r <genome_folder> -1 <G to A converted mate> -2 <C to T converted mate> -Trim1 <Trim off first Xbp of reads> -Trim2 <Trim off last Xbp of reads> -split1 <Use first Xbp of unmapped read for 1st split reads> -split3 <Use last Xbp of unmapped read for 3rd split reads>"
 
-REF=sys.argv[1]
-R1_pre=sys.argv[2]
-R2_pre=sys.argv[3]
+REF=sys.argv[com.index('-r')+1]
+R1_pre=sys.argv[com.index('-1')+1]
+R2_pre=sys.argv[com.index('-2')+1]
+if '-Trim1' in com:
+	T1=sys.argv[com.index('-Trim1')+1]
+if '-Trim1' not in com:
+	T1=25
+if '-Trim2' in com:
+	T2=sys.argv[com.index('-Trim2')+1]
+if '-Trim2' not in com:
+	T2=3
+if '-split1' in com:
+	S1=sys.argv[com.index('-split1')+1]
+if '-split1' not in com:
+	S1=40
+if '-split2' in com:
+	S2=sys.argv[com.index('-split2')+1]
+if '-split2' not in com:
+	S2=40
+
 R1=R1_pre.split('/')[-1]+'_trimmed.fastq'
 R2=R2_pre.split('/')[-1]+'_trimmed.fastq'
 
@@ -34,15 +53,15 @@ rfh.write("bismark="+bismark\
 +"\nR1_mod="+R1_mod\
 +"\nR2_mod="+R2_mod\
 +"\n"
-+"\n${python}/python ${TAURUS_loc}/Trimming.py ${R1_pre} &"\
++"\n${python}/python ${TAURUS_loc}/Trimming.py ${R1_pre} "+T1+" "+T2+" &"\
 +"\nwait"\
 +"\n"
 +"\n${bismark}/bismark --bowtie1 --path_to_bowtie ${bowtie} -un ${REF} ${R2} & "
 +"\n${bismark}/bismark --bowtie1 --path_to_bowtie ${bowtie} -un --pbat ${REF} ${R1} &"
 +"\nwait"\
 +"\n"\
-+"\n${python}/python ${TAURUS_loc}/3piece_read_split.py ${R1}_unmapped_reads.fq.gz &"\
-+"\n${python}/python ${TAURUS_loc}/3piece_read_split.py ${R2}_unmapped_reads.fq.gz &"\
++"\n${python}/python ${TAURUS_loc}/3piece_read_split.py ${R1}_unmapped_reads.fq.gz "+S1+" "+S2+" &"\
++"\n${python}/python ${TAURUS_loc}/3piece_read_split.py ${R2}_unmapped_reads.fq.gz "+S1+" "+S2+" &"\
 +"\nwait"\
 +"\n${bismark}/bismark --bowtie1 --path_to_bowtie ${bowtie} --pbat ${REF} ${R1}_unmapped_reads.fq.gz_r1.fq ${R1}_unmapped_reads.fq.gz_r2.fq ${R1}_unmapped_reads.fq.gz_r3.fq &"\
 +"\n${bismark}/bismark --bowtie1 --path_to_bowtie ${bowtie} ${REF} ${R2}_unmapped_reads.fq.gz_r1.fq ${R2}_unmapped_reads.fq.gz_r2.fq ${R2}_unmapped_reads.fq.gz_r3.fq &"\
