@@ -17,15 +17,10 @@ plus1=dfh1.readline().split()
 QS1=dfh1.readline().rstrip()
 rfhs=[]
 
-
-#size1=int(sys.argv[2])
-#size2=int(sys.argv[3])
-#trim1=int(sys.argv[4])
-#trim2=int(sys.argv[5])
-size1=35
-size2=35
-trim1=10
-trim2=10
+size1=int(sys.argv[2])
+size2=int(sys.argv[3])
+trim1=5
+trim2=5
 
 for i in range(1,4):
 	rfhs.append(open(fn1+'_r'+str(i)+'.fq','w'))
