@@ -7,8 +7,8 @@ print "USAGE: python TAURUS-MH <genome_folder> <G to A converted mate> <C to T c
 REF=sys.argv[1]
 R1_pre=sys.argv[2]
 R2_pre=sys.argv[3]
-R1=R1_pre.split('/')[-1]+'_F25_L3_trimmed.fastq'
-R2=R2_pre.split('/')[-1]+'_F25_L3_trimmed.fastq'
+R1=R1_pre.split('/')[-1]+'_trimmed.fastq'
+R2=R2_pre.split('/')[-1]+'_trimmed.fastq'
 
 if 'gz' in R1.split('.')[-1]:
 	R1_mod='.'.join(R1.split('.')[:-2]).split('/')[-1]
