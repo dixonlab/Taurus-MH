@@ -3,7 +3,7 @@
 import os
 import sys
 com=sys.argv
-if '-r' not in com or '-1' not in com or -2 not in 'com':
+if '-r' not in com or '-1' not in com or "-2" not in com:
 	print "USAGE: python TAURUS-MH -r <genome_folder> -1 <G to A converted mate> -2 <C to T converted mate> -Trim1 <Trim off first Xbp of reads> -Trim2 <Trim off last Xbp of reads> -split1 <Use first Xbp of unmapped read for 1st split reads> -split3 <Use last Xbp of unmapped read for 3rd split reads>"
 
 REF=sys.argv[com.index('-r')+1]
