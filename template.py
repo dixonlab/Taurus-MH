@@ -12,19 +12,19 @@ R2_pre=sys.argv[com.index('-2')+1]
 if '-Trim1' in com:
 	T1=sys.argv[com.index('-Trim1')+1]
 if '-Trim1' not in com:
-	T1=25
+	T1='25'
 if '-Trim2' in com:
 	T2=sys.argv[com.index('-Trim2')+1]
 if '-Trim2' not in com:
-	T2=3
+	T2='3'
 if '-split1' in com:
 	S1=sys.argv[com.index('-split1')+1]
 if '-split1' not in com:
-	S1=40
+	S1='40'
 if '-split2' in com:
 	S2=sys.argv[com.index('-split2')+1]
 if '-split2' not in com:
-	S2=40
+	S2='40'
 
 R1=R1_pre.split('/')[-1]+'_trimmed.fastq'
 R2=R2_pre.split('/')[-1]+'_trimmed.fastq'
