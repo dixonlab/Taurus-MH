@@ -21,7 +21,7 @@ dfh=open("template.py",'r')
 count=0
 
 for i in dfh:
-	if count==6:
+	if count==7:
 		rfh.write('picard="'+picard+'"\nbismark="'+bismark+'"\nbowtie="'+bowtie+'"\npython="'+python+'"\nTAURUS_loc="'+TAURUS_loc.rstrip()+'"\n')
 	rfh.write(i)
 	count+=1
