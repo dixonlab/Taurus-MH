@@ -63,29 +63,21 @@ rfh.write("bismark="+bismark\
 +"\n${python}/python ${TAURUS_loc}/3piece_read_split.py ${R1}_unmapped_reads.fq.gz "+S1+" "+S2+" &"\
 +"\n${python}/python ${TAURUS_loc}/3piece_read_split.py ${R2}_unmapped_reads.fq.gz "+S1+" "+S2+" &"\
 +"\nwait"\
-+"\n${bismark}/bismark --bowtie1 --path_to_bowtie ${bowtie} --pbat ${REF} ${R1}_unmapped_reads.fq.gz_r1.fq ${R1}_unmapped_reads.fq.gz_r2.fq ${R1}_unmapped_reads.fq.gz_r3.fq &"\
-+"\n${bismark}/bismark --bowtie1 --path_to_bowtie ${bowtie} ${REF} ${R2}_unmapped_reads.fq.gz_r1.fq ${R2}_unmapped_reads.fq.gz_r2.fq ${R2}_unmapped_reads.fq.gz_r3.fq &"\
++"\n${bismark}/bismark --bowtie1 --path_to_bowtie ${bowtie} --pbat ${REF} ${R1}_unmapped_reads.fq.gz_r1.fq &"\
++"\n${bismark}/bismark --bowtie1 --path_to_bowtie ${bowtie} ${REF} ${R2}_unmapped_reads.fq.gz_r1.fq &"\
 +"\nwait"\
 +"\n"
 +"\n${bismark}/deduplicate_bismark --bam --output_dir ./ \\"
 +"\n${R1_mod}_bismark.bam \\"
 +"\n${R2_mod}_bismark.bam \\"
 +"\n${R1}_unmapped_reads.fq.gz_r1_bismark.bam \\" 
-+"\n${R1}_unmapped_reads.fq.gz_r2_bismark.bam \\"
-+"\n${R1}_unmapped_reads.fq.gz_r3_bismark.bam \\" 
 +"\n${R2}_unmapped_reads.fq.gz_r1_bismark.bam \\" 
-+"\n${R2}_unmapped_reads.fq.gz_r2_bismark.bam \\" 
-+"\n${R2}_unmapped_reads.fq.gz_r3_bismark.bam "\
 +"\n"
 +"\njava -jar -Xmx10g ${picard}/picard.jar MergeSamFiles SO=queryname \\"
 +"\nI=${R1_mod}_bismark.bam \\"
 +"\nI=${R2_mod}_bismark.bam \\"
 +"\nI=${R1}_unmapped_reads.fq.gz_r1_bismark.bam \\"
-+"\nI=${R1}_unmapped_reads.fq.gz_r2_bismark.bam \\"
-+"\nI=${R1}_unmapped_reads.fq.gz_r3_bismark.bam \\"
 +"\nI=${R2}_unmapped_reads.fq.gz_r1_bismark.bam \\"
-+"\nI=${R2}_unmapped_reads.fq.gz_r2_bismark.bam \\"
-+"\nI=${R2}_unmapped_reads.fq.gz_r3_bismark.bam \\"
 +"\nO=${R1}_all_merged_3split.bam "\
 +"\n"
 +"\n${python}/python ${TAURUS_loc}/Bam_to_multi_contact.py ${R1}_all_merged_3split.bam"\
