@@ -80,6 +80,7 @@ rfh.write("bismark="+bismark\
 +"\njava -jar -Xmx10g ${picard}/picard.jar MergeSamFiles SO=queryname \\"
 +"\nI=${R1_mod}_bismark.bam \\"
 +"\nI=${R2_mod}_bismark.bam \\"
++"\nI=${R1}_unmapped_reads.fq.gz_r1_bismark.bam \\"
 +"\nI=${R1}_unmapped_reads.fq.gz_r2_bismark.bam \\"
 +"\nI=${R1}_unmapped_reads.fq.gz_r3_bismark.bam \\"
 +"\nI=${R2}_unmapped_reads.fq.gz_r1_bismark.bam \\"
