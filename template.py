@@ -82,7 +82,8 @@ rfh.write("bismark="+bismark\
 +"\n"
 +"\n${python}/python ${TAURUS_loc}/Bam_to_multi_contact.py ${R1}_all_merged_3split.bam"\
 +"\n${python}/python ${TAURUS_loc}/Deduplicate_multi_contact.py ${R1}_all_merged_3split.bam_multi_split_aligned.txt"\
-+"\n${python}/python ${TAURUS_loc}/Multi_contact_to_two_contact_stat_no_less.py  ${R1}_all_merged_3split.bam_multi_split_aligned.txt")
++"\n${python}/python ${TAURUS_loc}/Multi_contact_to_two_contact_stat_no_less.py ${R1}_all_merged_3split.bam_multi_split_aligned.txt"
++"\n${python}/python ${TAURUS_loc}/Stat_summary.py ${R1_pre}")
 
 rfh.close()
 os.system("sh Run_TAURUS-MH_"+R1.split("/")[-1]+".sh")
