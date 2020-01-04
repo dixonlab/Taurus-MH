@@ -34,12 +34,12 @@ if '.gz' in sys.argv[1]:
 while line1_1:
 	if B_trim!=0:
 		if len(line1_2[F_trim:-1*B_trim])>=25 and len(line2_2[F_trim:-1*B_trim])>=25:
-			rfh1.write(line1_1.rstrip()+'_1\n'+line1_2[F_trim:-1*B_trim]+'\n'+line1_3+line1_4[F_trim:-1*B_trim]+'\n')
-			rfh2.write(line2_1.rstrip()+'_2\n'+line2_2[F_trim:-1*B_trim]+'\n'+line2_3+line2_4[F_trim:-1*B_trim]+'\n')
+			rfh1.write(line1_1.rstrip()+'_1\n'+line1_2[F_trim:-1*B_trim]+'\n'+line1_3+'\n'+line1_4[F_trim:-1*B_trim]+'\n')
+			rfh2.write(line2_1.rstrip()+'_2\n'+line2_2[F_trim:-1*B_trim]+'\n'+line2_3+'\n'+line2_4[F_trim:-1*B_trim]+'\n')
 	if B_trim==0:
 		if len(line1_2[F_trim:])>=25 and len(line2_2[F_trim:])>=25:
-			rfh1.write(line1_1.rstrip()+'_1\n'+line1_2[F_trim:]+'\n'+line1_3+line1_4[F_trim:]+'\n')
-			rfh2.write(line2_1.rstrip()+'_2\n'+line2_2[F_trim:]+'\n'+line2_3+line2_4[F_trim:]+'\n')
+			rfh1.write(line1_1.rstrip()+'_1\n'+line1_2[F_trim:]+'\n'+line1_3+'\n'+line1_4[F_trim:]+'\n')
+			rfh2.write(line2_1.rstrip()+'_2\n'+line2_2[F_trim:]+'\n'+line2_3+'\n'+line2_4[F_trim:]+'\n')
 	if '.gz' not in sys.argv[1]:
 		line1_1=dfh1.readline()
 		line1_2=dfh1.readline()
@@ -60,12 +60,12 @@ while line1_1:
 		line2_4=str(dfh2.readline())[2:-3]
 if B_trim!=0:
         if len(line1_2[F_trim:-1*B_trim])>=25 and len(line2_2[F_trim:-1*B_trim])>=25:
-                rfh1.write(line1_1.rstrip()+'_1\n'+line1_2[F_trim:-1*B_trim]+'\n'+line1_3+line1_4[F_trim:-1*B_trim]+'\n')
-                rfh2.write(line2_1.rstrip()+'_2\n'+line2_2[F_trim:-1*B_trim]+'\n'+line2_3+line2_4[F_trim:-1*B_trim]+'\n')
+                rfh1.write(line1_1.rstrip()+'_1\n'+line1_2[F_trim:-1*B_trim]+'\n'+line1_3+'\n'+line1_4[F_trim:-1*B_trim]+'\n')
+                rfh2.write(line2_1.rstrip()+'_2\n'+line2_2[F_trim:-1*B_trim]+'\n'+line2_3+'\n'+line2_4[F_trim:-1*B_trim]+'\n')
 if B_trim==0:
         if len(line1_2[F_trim:])>=25 and len(line2_2[F_trim:])>=25:
-                rfh1.write(line1_1.rstrip()+'_1\n'+line1_2[F_trim:]+'\n'+line1_3+line1_4[F_trim:]+'\n')
-                rfh2.write(line2_1.rstrip()+'_2\n'+line2_2[F_trim:]+'\n'+line2_3+line2_4[F_trim:]+'\n')
+                rfh1.write(line1_1.rstrip()+'_1\n'+line1_2[F_trim:]+'\n'+line1_3+'\n'+line1_4[F_trim:]+'\n')
+                rfh2.write(line2_1.rstrip()+'_2\n'+line2_2[F_trim:]+'\n'+line2_3+'\n'+line2_4[F_trim:]+'\n')
 rfh1.close()
 dfh1.close()
 rfh2.close()
