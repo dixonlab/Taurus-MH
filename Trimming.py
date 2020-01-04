@@ -10,7 +10,7 @@ rfh1=open(sys.argv[1].split('/')[-1]+'_trimmed.fastq','w')
 rfh2=open(sys.argv[1].split('/')[-1].replace('R1','R2')+'_trimmed.fastq','w')
 F_trim=int(sys.argv[2])
 B_trim=int(sys.argv[3])
-if if sys.version_info[0]==2:
+if sys.version_info[0]==2:
 	line1_1=dfh1.readline().rstrip()
 	line1_2=dfh1.readline().rstrip()
 	line1_3=dfh1.readline().rstrip()
