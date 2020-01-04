@@ -41,14 +41,14 @@ while line1_1:
 			rfh1.write(line1_1.rstrip()+'_1\n'+line1_2[F_trim:]+'\n'+line1_3+'\n'+line1_4[F_trim:]+'\n')
 			rfh2.write(line2_1.rstrip()+'_2\n'+line2_2[F_trim:]+'\n'+line2_3+'\n'+line2_4[F_trim:]+'\n')
 	if '.gz' not in sys.argv[1]:
-		line1_1=dfh1.readline()
-		line1_2=dfh1.readline()
-		line1_3=dfh1.readline()
-		line1_4=dfh1.readline()
-		line2_1=dfh2.readline()
-		line2_2=dfh2.readline()
-		line2_3=dfh2.readline()
-		line2_4=dfh2.readline()
+		line1_1=dfh1.readline().rstrip()
+		line1_2=dfh1.readline().rstrip()
+		line1_3=dfh1.readline().rstrip()
+		line1_4=dfh1.readline().rstrip()
+		line2_1=dfh2.readline().rstrip()
+		line2_2=dfh2.readline().rstrip()
+		line2_3=dfh2.readline().rstrip()
+		line2_4=dfh2.readline().rstrip()
 	if '.gz' in sys.argv[1]:
 		line1_1=str(dfh1.readline())[2:-3]
 		line1_2=str(dfh1.readline())[2:-3]
