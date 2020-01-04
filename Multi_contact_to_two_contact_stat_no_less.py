@@ -29,7 +29,7 @@ chr_order.append('chrM')
 
 for i in dfh:
 	line=i.split()
-	all_data=line[1:]
+	all_data=line[2:]
 	Total_Aligned_read+=(8-all_data.count('na'))
 	if 8-all_data.count('na')>=2:
 		for a in range(0,8):
@@ -73,8 +73,8 @@ intra_more=float(intra_more)
 intra_less=float(intra_less)
 inter=float(inter)
 
-print fn+'\t'+'Total_mapped_Fragment, Total_Mapped_Read_pair, Intra_less, Intra_more, Inter: '+str(Total_Aligned_read)+'\t'+str(intra_less+intra_more+inter)+'\t'+str(intra_less)+' ('+str(round(100*foo(intra_less,(intra_less+intra_more+inter)),2))+'%)'+'\t'+str(intra_more)+' ('+str(round(100*foo(intra_more,(intra_less+intra_more+inter)),2))+'%)'+'\t'+str(inter)+' ('+str(round(100*foo(inter,(intra_less+intra_more+inter)),2))+'%)'
-print fn+'\t'+'No_split_stat: Total_mapped_Fragment, Total_Mapped_Read_pair, Intra_less, Intra_more, Inter: '+'\t'+str(Total_Aligned_read)+'\t'+str(no_split_intra_less+no_split_intra_more+no_split_inter)+'\t'+str(no_split_intra_less)+' ('+str(round(100*foo(no_split_intra_less,(no_split_intra_less+no_split_intra_more+no_split_inter)),2))+'%)'+'\t'+str(no_split_intra_more)+' ('+str(round(100*foo(no_split_intra_more,(no_split_intra_less+no_split_intra_more+no_split_inter)),2))+'%)'+'\t'+str(no_split_inter)+' ('+str(round(100*foo(no_split_inter,(no_split_intra_less+no_split_intra_more+no_split_inter)),2))+'%)'
+#print fn+'\t'+'Total_mapped_Fragment, Total_Mapped_Read_pair, Intra_less, Intra_more, Inter: '+str(Total_Aligned_read)+'\t'+str(intra_less+intra_more+inter)+'\t'+str(intra_less)+' ('+str(round(100*foo(intra_less,(intra_less+intra_more+inter)),2))+'%)'+'\t'+str(intra_more)+' ('+str(round(100*foo(intra_more,(intra_less+intra_more+inter)),2))+'%)'+'\t'+str(inter)+' ('+str(round(100*foo(inter,(intra_less+intra_more+inter)),2))+'%)'
+#print fn+'\t'+'No_split_stat: Total_mapped_Fragment, Total_Mapped_Read_pair, Intra_less, Intra_more, Inter: '+'\t'+str(Total_Aligned_read)+'\t'+str(no_split_intra_less+no_split_intra_more+no_split_inter)+'\t'+str(no_split_intra_less)+' ('+str(round(100*foo(no_split_intra_less,(no_split_intra_less+no_split_intra_more+no_split_inter)),2))+'%)'+'\t'+str(no_split_intra_more)+' ('+str(round(100*foo(no_split_intra_more,(no_split_intra_less+no_split_intra_more+no_split_inter)),2))+'%)'+'\t'+str(no_split_inter)+' ('+str(round(100*foo(no_split_inter,(no_split_intra_less+no_split_intra_more+no_split_inter)),2))+'%)'
 
 stat_rfh.write(fn+'\t'+'Total_mapped_Fragment, Total_Mapped_Read_pair, Intra_less, Intra_more, Inter: '+str(Total_Aligned_read)+'\t'+str(intra_less+intra_more+inter)+'\t'+str(intra_less)+' ('+str(round(100*foo(intra_less,(intra_less+intra_more+inter)),2))+'%)'+'\t'+str(intra_more)+' ('+str(round(100*foo(intra_more,(intra_less+intra_more+inter)),2))+'%)'+'\t'+str(inter)+' ('+str(round(100*foo(inter,(intra_less+intra_more+inter)),2))+'%)\n')
 stat_rfh.write(fn+'\t'+'No_split_stat: Total_mapped_Fragment, Total_Mapped_Read_pair, Intra_less, Intra_more, Inter'+'\t'+str(Total_Aligned_read)+'\t'+str(no_split_intra_less+no_split_intra_more+no_split_inter)+'\t'+str(no_split_intra_less)+' ('+str(round(100*foo(no_split_intra_less,(no_split_intra_less+no_split_intra_more+no_split_inter)),2))+'%)'+'\t'+str(no_split_intra_more)+' ('+str(round(100*foo(no_split_intra_more,(no_split_intra_less+no_split_intra_more+no_split_inter)),2))+'%)'+'\t'+str(no_split_inter)+' ('+str(round(100*foo(no_split_inter,(no_split_intra_less+no_split_intra_more+no_split_inter)),2))+'%)')

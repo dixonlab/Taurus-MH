@@ -21,7 +21,7 @@ for i in dfh:
 #	for a in line[2:-1]:
 #		if a!='na':
 #			Second_aligned+=1
-	if line[1:]!=pre[1:]:
+	if line[2:]!=pre[2:]:
 		rfh.write(i)
 		pre=line
 #	elif line[1:]==pre[1:]:

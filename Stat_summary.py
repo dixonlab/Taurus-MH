@@ -1,12 +1,12 @@
 import sys
 ref=[sys.argv[1]]
-rfh=open(sys.argv[1]+'_summary.txt','w')
-rfh.write('Sample\tSequenced_Read-pair\tMapped_Read-pair\tNonclonal_Read-pair\tIntra_less\tIntra_less\tInter\tCpG_met\tCHG_met\tCHH_met\n')
+rfh=open(sys.argv[1].split('/')[-1]+'_summary.txt','w')
+rfh.write('Sample\tSequenced_Read-pair\tMapped_Read-pair\tNonclonal_Read-pair\tIntra_less\tIntra_more\tInter\tCpG_met\tCHG_met\tCHH_met\n')
 for fn in ref:
         fn=fn.split()[-1].split('/')[-1]
         dfh1=open(fn+'_trimmed_bismark_SE_report.txt','r')
         dfh2=open(fn+'_trimmed.fastq_all_merged_3split.bam_multi_split_aligned.txt_Aligned_Fragment_count.txt','r')
-        dfh3=open(fn+'_trimmed.fastq_all_merged_3split.bam_multi_split_aligned.txt_2_contacts.stats.txt','r')
+        dfh3=open(fn+'_trimmed.fastq_all_merged_3split.bam_multi_split_aligned.txt_man_dedupped.txt_2_contacts.stats.txt','r')
         data=[0,0,0,0,0,0,0,0,0,0]
         for i in dfh1:
                 line=i.split()
