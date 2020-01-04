@@ -52,25 +52,18 @@ rfh.write("bismark="+bismark\
 +"\nR2="+R2\
 +"\nR1_mod="+R1_mod\
 +"\nR2_mod="+R2_mod\
-+"\n")
-if sys.version_info[0]==2:
-	rfh.write("\n${python}/python ${TAURUS_loc}/Trimming_python2.py ${R1_pre} "+T1+" "+T2+" &")
-if sys.version_info[0]==3:
-	rfh.write("\n${python}/python ${TAURUS_loc}/Trimming_python3.py ${R1_pre} "+T1+" "+T2+" &")
-rfh.write("\nwait"\
++"\n"
++"\n${python}/python ${TAURUS_loc}/Trimming.py ${R1_pre} "+T1+" "+T2+" &"\
++"\nwait"\
 +"\n"\
 +"\n${bismark}/bismark --bowtie1 --path_to_bowtie ${bowtie} -un ${REF} ${R2} & "
 +"\n${bismark}/bismark --bowtie1 --path_to_bowtie ${bowtie} -un --pbat ${REF} ${R1} &"
 +"\nwait"\
 +"\n"\
 +"\nrm ${R1} ${R2}"\
-+"\n")
-if sys.version_info[0]==2:
-	rfh.write("\n${python}/python ${TAURUS_loc}/3piece_read_split_python2.py ${R1}_unmapped_reads.fq.gz "+S1+" "+S2+" &"\
-+"\n${python}/python ${TAURUS_loc}/3piece_read_split_python2.py ${R2}_unmapped_reads.fq.gz "+S1+" "+S2+" &")
-if sys.version_info[0]==3:
-	rfh.write("\n${python}/python ${TAURUS_loc}/3piece_read_split_python3.py ${R1}_unmapped_reads.fq.gz "+S1+" "+S2+" &"\
-+"\n${python}/python ${TAURUS_loc}/3piece_read_split_python3.py ${R2}_unmapped_reads.fq.gz "+S1+" "+S2+" &")
++"\n"\
++"\n${python}/python ${TAURUS_loc}/3piece_read_split.py ${R1}_unmapped_reads.fq.gz "+S1+" "+S2+" &"\
++"\n${python}/python ${TAURUS_loc}/3piece_read_split.py ${R2}_unmapped_reads.fq.gz "+S1+" "+S2+" &"\
 +"\nwait"\
 +"\nrm ${R1}_unmapped_reads.fq.gz ${R2}_unmapped_reads.fq.gz"\
 +"\n"
