@@ -1,15 +1,15 @@
-print "----------------------------------------------------------------------------------------------------------------------------------------------------------"
-print "TAURS-MH is dependent on Bismark, PICARD, python, bowtie, pysam,and samtools. Please make sure you have all of these on your system and provide path for installation."
-print "You can always do this process again if you have typed wrong path or changed path of any program."
-print "----------------------------------------------------------------------------------------------------------------------------------------------------------"
-print "\n\n"
-print "Please provide path to picard:"
+print ("----------------------------------------------------------------------------------------------------------------------------------------------------------")
+print ("TAURS-MH is dependent on Bismark, PICARD, python, bowtie, pysam,and samtools. Please make sure you have all of these on your system and provide path for installation.")
+print ("You can always do this process again if you have typed wrong path or changed path of any program.")
+print ("----------------------------------------------------------------------------------------------------------------------------------------------------------")
+print ("\n\n")
+print ("Please provide path to picard:")
 picard=raw_input()
-print "Please provide path to bismark:"
+print ("Please provide path to bismark:")
 bismark=raw_input()
-print "Please provide path to bowtie: "
+print ("Please provide path to bowtie: ")
 bowtie=raw_input()
-print "Please provide path to python: "
+print ("Please provide path to python: ")
 python=raw_input()
 
 import os
