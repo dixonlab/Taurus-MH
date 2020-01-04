@@ -4,7 +4,7 @@ import os
 import sys
 com=sys.argv
 if '-r' not in com or '-1' not in com or "-2" not in com:
-	print "USAGE: python TAURUS-MH -r <genome_folder> -1 <G to A converted mate> -2 <C to T converted mate> -Trim1 <Trim off first Xbp of reads> -Trim2 <Trim off last Xbp of reads> -split1 <Use first Xbp of unmapped read for 1st split reads> -split3 <Use last Xbp of unmapped read for 3rd split reads>"
+	print ("USAGE: python TAURUS-MH -r <genome_folder> -1 <G to A converted mate> -2 <C to T converted mate> -Trim1 <Trim off first Xbp of reads> -Trim2 <Trim off last Xbp of reads> -split1 <Use first Xbp of unmapped read for 1st split reads> -split3 <Use last Xbp of unmapped read for 3rd split reads>")
 
 REF=sys.argv[com.index('-r')+1]
 R1_pre=sys.argv[com.index('-1')+1]
@@ -55,35 +55,41 @@ rfh.write("bismark="+bismark\
 +"\n"
 +"\n${python}/python ${TAURUS_loc}/Trimming.py ${R1_pre} "+T1+" "+T2+" &"\
 +"\nwait"\
-+"\n"
++"\n"\
 +"\n${bismark}/bismark --bowtie1 --path_to_bowtie ${bowtie} -un ${REF} ${R2} & "
 +"\n${bismark}/bismark --bowtie1 --path_to_bowtie ${bowtie} -un --pbat ${REF} ${R1} &"
 +"\nwait"\
 +"\n"\
++"\nrm ${R1} ${R2}"\
++"\n"\
 +"\n${python}/python ${TAURUS_loc}/3piece_read_split.py ${R1}_unmapped_reads.fq.gz "+S1+" "+S2+" &"\
 +"\n${python}/python ${TAURUS_loc}/3piece_read_split.py ${R2}_unmapped_reads.fq.gz "+S1+" "+S2+" &"\
 +"\nwait"\
++"\nrm ${R1}_unmapped_reads.fq.gz ${R2}_unmapped_reads.fq.gz"\
++"\n"
 +"\n${bismark}/bismark --bowtie1 --path_to_bowtie ${bowtie} --pbat ${REF} ${R1}_unmapped_reads.fq.gz_r1.fq &"\
 +"\n${bismark}/bismark --bowtie1 --path_to_bowtie ${bowtie} ${REF} ${R2}_unmapped_reads.fq.gz_r1.fq &"\
 +"\nwait"\
-+"\n"
-+"\n${bismark}/deduplicate_bismark --bam --output_dir ./ \\"
-+"\n${R1_mod}_bismark.bam \\"
-+"\n${R2_mod}_bismark.bam \\"
-+"\n${R1}_unmapped_reads.fq.gz_r1_bismark.bam \\" 
-+"\n${R2}_unmapped_reads.fq.gz_r1_bismark.bam \\" 
-+"\n"
++"\n"\
++"\nrm ${R1}_unmapped_reads.fq.gz_r1.fq ${R2}_unmapped_reads.fq.gz_r1.fq"\
++"\n"\
 +"\njava -jar -Xmx10g ${picard}/picard.jar MergeSamFiles SO=queryname \\"
 +"\nI=${R1_mod}_bismark.bam \\"
 +"\nI=${R2_mod}_bismark.bam \\"
 +"\nI=${R1}_unmapped_reads.fq.gz_r1_bismark.bam \\"
 +"\nI=${R2}_unmapped_reads.fq.gz_r1_bismark.bam \\"
 +"\nO=${R1}_all_merged_3split.bam "\
-+"\n"
++"\n"\
++"\nrm ${R1_mod}_bismark.bam ${R2_mod}_bismark.bam ${R1}_unmapped_reads.fq.gz_r1_bismark.bam ${R2}_unmapped_reads.fq.gz_r1_bismark.bam"\
++"\n"\
 +"\n${python}/python ${TAURUS_loc}/Bam_to_multi_contact.py ${R1}_all_merged_3split.bam"\
 +"\n${python}/python ${TAURUS_loc}/Deduplicate_multi_contact.py ${R1}_all_merged_3split.bam_multi_split_aligned.txt"\
 +"\n${python}/python ${TAURUS_loc}/Multi_contact_to_two_contact_stat_no_less.py ${R1}_all_merged_3split.bam_multi_split_aligned.txt_man_dedupped.txt"\
-+"\n${python}/python ${TAURUS_loc}/Stat_summary.py ${R1_pre}")
++"\n${python}/python ${TAURUS_loc}/Deduplicate_bam_with_contact.py ${R1}_all_merged_3split.bam"\
++"\n${python}/python ${TAURUS_loc}/Stat_summary.py ${R1_pre}"\
++"\n"\
++"\nrm *_SE_report.txt"\
++"\nrm ${R1}_all_merged_3split.bam")
 
 rfh.close()
 os.system("sh Run_TAURUS-MH_"+R1.split("/")[-1]+".sh")
