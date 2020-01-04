@@ -30,11 +30,6 @@ if '.gz' in sys.argv[1]:
 	line2_3=str(dfh2.readline())[2:-3]
 	line2_4=str(dfh2.readline())[2:-3]
 
-print (line1_1)
-print (line1_2)
-print (line1_3)
-print (line1_4)
-exit()
 
 while line1_1:
 	if B_trim!=0:
