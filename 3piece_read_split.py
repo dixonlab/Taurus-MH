@@ -27,7 +27,7 @@ size2=int(sys.argv[3])
 trim1=5
 trim2=5
 
-for i in range(1,2):
+for i in range(1,4):
 	rfhs.append(open(fn1+'_r'+str(i)+'.fq','w'))
 
 
