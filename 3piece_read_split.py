@@ -43,5 +43,10 @@ while line1:
 		line1=str(dfh1.readline().rstrip())[2:-1]
 		plus1=str(dfh1.readline().rstrip())[2:-1]
 		QS1=str(dfh1.readline().rstrip())[2:-1]
+	if sys.version_info[0]==2:
+		ID1=dfh1.readline().rstrip()
+		line1=dfh1.readline().rstrip()
+		plus1=dfh1.readline().rstrip()
+		QS1=dfh1.readline().rstrip()  
 
 map(lambda x:x.close(),rfhs)
