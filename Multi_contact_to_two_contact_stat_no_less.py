@@ -22,7 +22,7 @@ no_split_intra_more=0
 no_split_inter=0
 chr_order=[]
 for i in range(0,22):
-	chr_order.append('chr'+str(i))
+	chr_order.append('chr'+str(i+1))
 chr_order.append('chrX')
 chr_order.append('chrY')
 chr_order.append('chrM')
